@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earntrix - Earn Online with Guidance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 3px solid #FF6B35;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #E55A2B;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            margin-top: 20px;
+        }
+        
+        .cta-button i {
+            margin-right: 10px;
+        }
+        
+        .cta-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .register-button {
+            background-color: #FF6B35;
+            margin-left: 15px;
+        }
+        
+        .register-button:hover {
+            background-color: #E55A2B;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #E55A2B;
+            font-size: 2.2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            color: #FF6B35;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* Earnings Proof Section */
+        .earnings-proof {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .earnings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .earnings-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 3px solid #FF6B35;
+        }
+        
+        .earnings-image:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .process-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .step-number {
+            background-color: #FF6B35;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border: 1px solid #eee;
+        }
+        
+        .testimonial-card:before {
+            content: "\201C";
+            font-size: 60px;
+            color: #FF6B35;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            color: #E55A2B;
+            font-weight: 600;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: #f8f9fa;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            color: #FF6B35;
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #E55A2B 0%, #C44A1F 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .whatsapp-number {
+            font-size: 1.5rem;
+            background: white;
+            color: #E55A2B;
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #C44A1F;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF6B35;
+        }
+        
+        .disclaimer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Color for links */
+        a {
+            color: #E55A2B;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #E55A2B;
+                flex-direction: column;
+                padding: 20px;
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-image {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-section {
+                flex: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Earntrix</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#earnings">Earnings Proof</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="container hero-content">
+            <h1>Learn How People Are Earning Online with Earntrix</h1>
+            <p>Simple steps, guided support, and real opportunities — get started today.</p>
+            
+            <div class="button-group">
+                <a href="https://wa.me/256768099462" class="cta-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="https://earntrix.com/user/register.php?ref=MuhumuzaApollo" class="cta-button register-button" target="_blank">
+                    <i class="fas fa-user-plus"></i> Register Now
+                </a>
+            </div>
+            
+            <div class="hero-images">
+                <img src="https://i.ibb.co/Rp3WcgrR/earn1.jpg" alt="Earnings Proof 1" class="hero-image">
+                <img src="https://i.ibb.co/m5L8pkhm/earn2.jpg" alt="Earnings Proof 2" class="hero-image">
+                <img src="https://i.ibb.co/v45c0B0b/earn3.jpg" alt="Earnings Proof 3" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <h2 class="section-title">About Earntrix</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>What Earntrix Does</h3>
+                    <p>Earntrix is an online platform that allows individuals to earn through digital services and referrals. With proper guidance, users can understand how the system works and participate effectively.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Who It Is For</h3>
+                    <p>Earntrix is designed for anyone looking to earn online. No previous experience is needed — we provide step-by-step guidance to help you get started and succeed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>How People Benefit</h3>
+                    <p>Users can earn through the platform while learning valuable digital skills. We provide honest explanations and ongoing support to ensure you understand the process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earnings Proof Section -->
+    <section class="earnings-proof" id="earnings">
+        <div class="container">
+            <h2 class="section-title">Real Earnings Proof</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 1.1rem;">
+                See real examples of what people are earning through Earntrix. These are actual results from users who followed the guidance process.
+            </p>
+            
+            <div class="earnings-grid">
+                <img src="https://i.ibb.co/Rp3WcgrR/earn1.jpg" alt="Earnings Proof 1" class="earnings-image">
+                <img src="https://i.ibb.co/m5L8pkhm/earn2.jpg" alt="Earnings Proof 2" class="earnings-image">
+                <img src="https://i.ibb.co/v45c0B0b/earn3.jpg" alt="Earnings Proof 3" class="earnings-image">
+                <img src="https://i.ibb.co/DDTpvjWd/earn4.jpg" alt="Earnings Proof 4" class="earnings-image">
+                <img src="https://i.ibb.co/0p0Sn2Gs/earn5.jpg" alt="Earnings Proof 5" class="earnings-image">
+                <img src="https://i.ibb.co/vvV5qv4Z/earn6.jpg" alt="Earnings Proof 6" class="earnings-image">
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://wa.me/256768099462" class="cta-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Ask Me How You Can Earn Too
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">How the Process Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Contact Me on WhatsApp</h3>
+                        <p>Start by sending me a message on WhatsApp. I'll respond quickly to answer your initial questions and explain everything.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get a Clear Explanation</h3>
+                        <p>I'll explain how Earntrix works in simple terms so you understand everything before making any decisions.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Register with My Link</h3>
+                        <p>Use my referral link to register: <a href="https://earntrix.com/user/register.php?ref=MuhumuzaApollo" target="_blank">https://earntrix.com/user/register.php?ref=MuhumuzaApollo</a></p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Learn How to Participate</h3>
+                        <p>You'll learn how to effectively use the platform to start earning through digital services and referrals.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Get Ongoing Support</h3>
+                        <p>I'll be available to answer your questions and provide support as you start earning with Earntrix.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Contact Me Section -->
+    <section class="features" id="contact">
+        <div class="container">
+            <h2 class="section-title">Why Contact Me?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Experience with Earntrix</h3>
+                    <p>I have firsthand experience with Earntrix and can provide honest insights about how it works and what to expect.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>One-on-One Guidance</h3>
+                    <p>I guide new members step by step and explain everything clearly before you make any decision.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Fast Response on WhatsApp</h3>
+                    <p>I respond quickly to WhatsApp messages, so you won't have to wait long to get your questions answered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What People Are Saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I didn't understand Earntrix at first, but after chatting on WhatsApp everything became clear. The guidance made all the difference."
+                    </div>
+                    <div class="testimonial-author">- Alex M.</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The step-by-step explanation helped me avoid mistakes. I appreciate the honest approach and ongoing support with Earntrix."
+                    </div>
+                    <div class="testimonial-author">- Sarah K.</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Having someone to guide me through the process made me feel confident about joining Earntrix. No pressure, just clear information."
+                    </div>
+                    <div class="testimonial-author">- David T.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is Earntrix legit?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Earntrix is a legitimate platform for earning through digital services. The earnings proof images show real results from actual users.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do I need previous experience?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No previous experience is needed. I provide guidance to help you understand how everything works from the beginning.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I start?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can either message me on WhatsApp for guidance first, or register directly using my referral link: <a href="https://earntrix.com/user/register.php?ref=MuhumuzaApollo" target="_blank">Click here to register</a></p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Are the earnings real?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, the images on this page show real earnings from Earntrix users. However, earnings vary depending on individual effort and understanding of the platform.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How much can I earn?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Earnings vary depending on your effort and how well you understand the platform. Check the earnings proof section to see real examples of what others are earning with Earntrix.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is there guidance after registration?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, I provide ongoing support even after you register. You can message me anytime with questions as you start using the Earntrix platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Earning?</h2>
+            <p>Take action now! You can either chat with me first for guidance, or register directly and I'll help you afterwards.</p>
+            
+            <div class="whatsapp-number">
+                <i class="fab fa-whatsapp"></i> 0768 099 462
+            </div>
+            
+            <div class="button-group">
+                <a href="https://wa.me/256768099462" class="cta-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp First
+                </a>
+                <a href="https://earntrix.com/user/register.php?ref=MuhumuzaApollo" class="cta-button register-button" target="_blank">
+                    <i class="fas fa-bolt"></i> Register Now & Start Earning
+                </a>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 1rem;">I respond quickly to all WhatsApp messages</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Earntrix Guidance</h3>
+                    <p>Providing clear explanations and step-by-step guidance for Earntrix users. See real earnings proof above.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#earnings">Earnings Proof</a></li>
+                        <li><a href="#process">How It Works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Get Started</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/256768099462" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Guidance</a></li>
+                        <li><a href="https://earntrix.com/user/register.php?ref=MuhumuzaApollo" target="_blank"><i class="fas fa-user-plus"></i> Direct Registration</a></li>
+                        <li><a href="#contact">Why Contact Me</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p>Disclaimer: Results may vary depending on effort and understanding of the platform. The earnings shown are real examples but not guarantees. This website provides guidance and explanations about Earntrix.</p>
+                <p style="margin-top: 10px;">© 2023 Earntrix Guidance. All rights reserved. | Referral ID: MuhumuzaApollo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // FAQ toggle function
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            answer.classList.toggle('open');
+            
+            if (answer.classList.contains('open')) {
+                toggle.textContent = '−';
+            } else {
+                toggle.textContent = '+';
+            }
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Button tracking (optional)
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonType = this.classList.contains('register-button') ? 'Register' : 'WhatsApp';
+                console.log(buttonType + ' button clicked');
+                // You can add Google Analytics or other tracking here
+            });
+        });
+        
+        // Preload images for better user experience
+        window.addEventListener('load', function() {
+            const imageUrls = [
+                'https://i.ibb.co/Rp3WcgrR/earn1.jpg',
+                'https://i.ibb.co/m5L8pkhm/earn2.jpg',
+                'https://i.ibb.co/v45c0B0b/earn3.jpg',
+                'https://i.ibb.co/DDTpvjWd/earn4.jpg',
+                'https://i.ibb.co/0p0Sn2Gs/earn5.jpg',
+                'https://i.ibb.co/vvV5qv4Z/earn6.jpg'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        });
+    </script>
+</body>
+</html>
